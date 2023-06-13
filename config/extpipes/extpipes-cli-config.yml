@@ -1,30 +1,20 @@
 ---
-# follows the same parameter structure as the DB extractor configuration
-cognite: # kwargs to pass to the CogniteClient, Environment variable format: ${ENVIRONMENT_VARIABLE}
-  # host: https://${EXTPIPES_CDF_CLUSTER}.cognitedata.com/
+cognite:
     host: ${EXTPIPES_CDF_HOST}
     project: ${EXTPIPES_CDF_PROJECT}
-  #
-  # AAD IdP login credentials:
-  #
     idp-authentication:
         client-id: ${EXTPIPES_IDP_CLIENT_ID}
         secret: ${EXTPIPES_IDP_CLIENT_SECRET}
         scopes:
             - ${EXTPIPES_IDP_SCOPES}
         token_url: ${EXTPIPES_IDP_TOKEN_URL}
-
 logger:
     file:
         path: ./logs/extpipes-deploy.log
         level: INFO
     console:
         level: INFO
-
-# extpipe-pattern only documentation atm
 extpipe-pattern: '{source}:{short-name}:{rawtable-name}:{suffix}'
-
-# can contain multiple contacts, can be overwritten on pipeline level
 default-contacts:
     - name: zsolt.kiss
       email: zsolt.kiss@accenture.com
